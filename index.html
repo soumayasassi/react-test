@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ 
+</head>
+<body>
+<div id="react-root"></div>
+<div id="root"></div>
+<script type="text/babel">
+//ReactDOM.render(React.createElement('h1',null, 'Hello React'), document.getElementById('react-root'));
+class BonjourClass extends React.Component
+{ constructor(props)
+{
+    super(props);
+    this.state={
+    name:  "Soumaya"
+    }
+	this.handleChange = this.handleChange.bind(this)
+
+}
+handleChange(e){
+this.setState({
+    name: e.target.value 
+})
+}
+    render()
+    {
+
+        return (
+		<div id="title">
+            <h1 className="heading">{this.props.message} </h1>
+            <p> {this.state.name} You are learning the version  {this.props.version}</p>
+			<p><input type="text" value={this.state.name} onChange={this.handleChange}/></p>
+        </div>
+)
+    }
+}
+const Bjr = (props) => {
+    return <div id="title">
+        <h1 className="heading">
+            {props.message}
+        </h1>
+        <p> You are learning the version  { props.version}</p>
+    </div>;
+};
+class Bonjour extends React.Component
+{
+
+render(){
+    return <h1> Hello React </h1>
+
+}
+}
+//ReactDOM.render(<h1>Hello</h1>, document.getElementById('react-root')) ;
+ReactDOM.render(<Bjr message="Dynamic Content" version={16}/>, document.getElementById('react-root'));
+ReactDOM.render(<BonjourClass message="Dynamic Content" version={16}/>, document.getElementById('root'));
+</script>
+</body>
+
+
+</html>
